@@ -1,0 +1,5515 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover"
+>
+
+<meta name="theme-color" content="#003b21">
+
+<title>IAC | November Sham 2026</title>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+>
+
+<style>
+
+:root{
+  --green:#006838;
+  --green2:#009654;
+  --dark:#003b21;
+  --deep:#002515;
+  --bg:#f4f7f5;
+  --white:#fff;
+  --text:#17251e;
+  --muted:#718078;
+  --border:#e0e9e4;
+  --soft:#eaf7f0;
+  --success:#078447;
+  --successSoft:#e9f8f0;
+  --warning:#a16b10;
+  --warningSoft:#fff7e5;
+  --danger:#d83f3f;
+  --dangerSoft:#fff0f0;
+  --gold:#d89c26;
+  --shadow:0 16px 40px rgba(0,65,35,.09);
+}
+
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+  margin:0;
+  width:100%;
+  min-height:100%;
+}
+
+body{
+  font-family:"Cairo",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+html[lang="en"] body{
+  font-family:"Inter","Cairo",sans-serif;
+}
+
+button,
+input,
+select{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+
+/* ==================================================
+   SPLASH
+================================================== */
+.splash{
+  position:fixed;
+  z-index:50000;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #087646,
+      #003b21 58%,
+      #002515
+    );
+
+  transition:
+    opacity .7s ease,
+    visibility .7s ease;
+}
+
+.splash.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.splash-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+.logo-animation{
+  position:relative;
+  width:150px;
+  height:150px;
+  margin-bottom:25px;
+}
+
+.logo-half{
+  position:absolute;
+  top:0;
+  width:75px;
+  height:150px;
+  overflow:hidden;
+  opacity:0;
+  filter:drop-shadow(0 15px 30px rgba(0,0,0,.25));
+}
+
+.logo-half img{
+  position:absolute;
+  top:0;
+  width:150px;
+  height:150px;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+.logo-left{
+  left:0;
+  transform:translateX(-80px);
+  animation:logoLeft .9s .15s forwards cubic-bezier(.2,.8,.2,1);
+}
+
+.logo-left img{
+  left:0;
+}
+
+.logo-right{
+  right:0;
+  transform:translateX(80px);
+  animation:logoRight .9s .15s forwards cubic-bezier(.2,.8,.2,1);
+}
+
+.logo-right img{
+  right:0;
+}
+
+@keyframes logoLeft{
+  to{
+    transform:translateX(0);
+    opacity:1;
+  }
+}
+
+@keyframes logoRight{
+  to{
+    transform:translateX(0);
+    opacity:1;
+  }
+}
+
+.logo-ring{
+  position:absolute;
+  inset:-10px;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:50%;
+  opacity:0;
+  animation:ringShow .8s .85s forwards;
+}
+
+.logo-ring::after{
+  content:"";
+  position:absolute;
+  inset:-10px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:50%;
+}
+
+@keyframes ringShow{
+  from{
+    opacity:0;
+    transform:scale(.75);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.splash-title{
+  color:white;
+  font-size:21px;
+  font-weight:800;
+  opacity:0;
+  transform:translateY(15px);
+  animation:splashText .6s .9s forwards;
+}
+
+.splash-campaign{
+  margin-top:6px;
+  color:rgba(255,255,255,.66);
+  font-size:11px;
+  letter-spacing:1px;
+  opacity:0;
+  animation:splashText .6s 1.15s forwards;
+}
+
+.splash-line{
+  width:0;
+  height:2px;
+  margin-top:17px;
+  border-radius:10px;
+  background:rgba(255,255,255,.8);
+  animation:splashLine .7s 1.25s forwards;
+}
+
+@keyframes splashText{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes splashLine{
+  to{
+    width:100px;
+  }
+}
+
+
+/* ==================================================
+   WELCOME SCREEN
+================================================== */
+
+.welcome-screen{
+  position:fixed;
+  z-index:40000;
+  inset:0;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:25px;
+
+  overflow:auto;
+
+  background:
+    radial-gradient(
+      circle at 20% 15%,
+      rgba(0,150,84,.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(0,104,56,.15),
+      transparent 32%
+    ),
+    linear-gradient(
+      145deg,
+      #f7fcf9,
+      #eaf7f0
+    );
+
+  opacity:0;
+  transition:opacity .6s ease;
+}
+
+.welcome-screen.show{
+  display:flex;
+  opacity:1;
+}
+
+.welcome-screen.leave{
+  opacity:0;
+  pointer-events:none;
+}
+
+.welcome-decoration{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.welcome-decoration.one{
+  width:250px;
+  height:250px;
+  top:-100px;
+  right:-70px;
+  border:40px solid rgba(0,104,56,.04);
+}
+
+.welcome-decoration.two{
+  width:200px;
+  height:200px;
+  bottom:-80px;
+  left:-50px;
+  border:30px solid rgba(0,150,84,.05);
+}
+
+.welcome-card{
+  position:relative;
+  z-index:2;
+
+  width:min(600px,100%);
+
+  padding:42px 35px 32px;
+
+  border:1px solid rgba(0,104,56,.10);
+  border-radius:30px;
+
+  background:rgba(255,255,255,.88);
+
+  backdrop-filter:blur(15px);
+
+  box-shadow:
+    0 30px 80px
+    rgba(0,70,38,.12);
+
+  text-align:center;
+
+  animation:welcomeUp .8s ease;
+}
+
+@keyframes welcomeUp{
+  from{
+    opacity:0;
+    transform:translateY(25px) scale(.97);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.welcome-logo-wrap{
+  position:relative;
+
+  width:115px;
+  height:115px;
+
+  margin:0 auto 22px;
+}
+
+.welcome-logo-glow{
+  position:absolute;
+  inset:-15px;
+
+  border-radius:50%;
+
+  background:
+    rgba(0,150,84,.10);
+
+  animation:
+    welcomePulse
+    2.4s ease-in-out infinite;
+}
+
+@keyframes welcomePulse{
+  50%{
+    transform:scale(1.08);
+    opacity:.5;
+  }
+}
+
+.welcome-logo{
+  position:relative;
+  z-index:2;
+
+  width:115px;
+  height:115px;
+
+  object-fit:cover;
+
+  border-radius:50%;
+
+  border:4px solid white;
+
+  box-shadow:
+    0 15px 35px
+    rgba(0,80,44,.18);
+}
+
+.welcome-mini{
+  color:var(--green);
+
+  font-size:10px;
+  font-weight:800;
+
+  letter-spacing:1.4px;
+}
+
+.welcome-title{
+  margin-top:8px;
+
+  font-size:23px;
+  font-weight:800;
+}
+
+.welcome-divider{
+  width:50px;
+  height:3px;
+
+  margin:16px auto;
+
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--green),
+      var(--green2)
+    );
+}
+
+.welcome-quote-ar{
+  min-height:38px;
+
+  font-size:16px;
+  font-weight:800;
+  line-height:1.9;
+
+  color:var(--dark);
+}
+
+.welcome-quote-en{
+  min-height:34px;
+
+  margin-top:8px;
+
+  direction:ltr;
+
+  color:var(--muted);
+
+  font-family:"Inter",sans-serif;
+
+  font-size:12px;
+  line-height:1.7;
+}
+
+.welcome-button{
+  width:100%;
+
+  margin-top:25px;
+
+  padding:15px 20px;
+
+  border:0;
+  border-radius:15px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--dark),
+      var(--green2)
+    );
+
+  font-size:12px;
+  font-weight:800;
+
+  box-shadow:
+    0 10px 25px
+    rgba(0,104,56,.18);
+}
+
+.welcome-countdown{
+  margin-top:13px;
+
+  color:var(--muted);
+
+  font-size:9px;
+}
+
+
+/* ==================================================
+   SIDEBAR
+================================================== */
+
+.sidebar{
+  position:fixed;
+  z-index:2000;
+
+  top:0;
+  right:0;
+  bottom:0;
+
+  width:270px;
+
+  padding:24px 17px;
+
+  overflow-y:auto;
+
+  color:white;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(255,255,255,.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      var(--dark),
+      var(--deep)
+    );
+
+  box-shadow:
+    -10px 0 35px
+    rgba(0,40,22,.10);
+}
+
+html[dir="ltr"] .sidebar{
+  right:auto;
+  left:0;
+  box-shadow:10px 0 35px rgba(0,40,22,.10);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  padding:5px 8px 23px;
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.09);
+}
+
+.brand-logo{
+  width:52px;
+  height:52px;
+
+  flex:0 0 52px;
+
+  overflow:hidden;
+
+  border-radius:50%;
+
+  background:white;
+
+  border:
+    2px solid
+    rgba(255,255,255,.85);
+}
+
+.brand-logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.brand-name{
+  font-size:13px;
+  font-weight:800;
+}
+
+.brand-en{
+  direction:ltr;
+  margin-top:2px;
+  font-size:7px;
+  opacity:.5;
+}
+
+.campaign{
+  margin:18px 7px;
+  padding:10px;
+  border-radius:12px;
+  background:rgba(255,255,255,.07);
+  text-align:center;
+  font-size:10px;
+  color:rgba(255,255,255,.7);
+}
+
+.nav{
+  margin-top:17px;
+}
+
+.nav-btn{
+  width:100%;
+
+  display:flex;
+  align-items:center;
+  gap:11px;
+
+  margin-bottom:7px;
+  padding:12px 13px;
+
+  border:0;
+  border-radius:13px;
+
+  color:rgba(255,255,255,.68);
+  background:transparent;
+
+  text-align:start;
+
+  font-size:11px;
+  font-weight:700;
+
+  transition:.2s;
+}
+
+.nav-btn:hover{
+  color:white;
+  background:rgba(255,255,255,.06);
+}
+
+.nav-btn.active{
+  color:white;
+  background:linear-gradient(135deg,var(--green),var(--green2));
+}
+
+.nav-icon{
+  width:31px;
+  height:31px;
+
+  flex:0 0 31px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:9px;
+
+  background:rgba(255,255,255,.1);
+
+  font-size:15px;
+}
+
+.sidebar-footer{
+  margin-top:35px;
+  text-align:center;
+  color:rgba(255,255,255,.3);
+  font-size:8px;
+}
+
+.sidebar-overlay{
+  display:none;
+
+  position:fixed;
+  z-index:1900;
+
+  inset:0;
+
+  background:rgba(0,25,14,.58);
+
+  backdrop-filter:blur(3px);
+}
+
+.sidebar-overlay.show{
+  display:block;
+}
+
+
+/* ==================================================
+   MAIN
+================================================== */
+
+.main{
+  width:calc(100% - 270px);
+  min-height:100vh;
+  margin-right:270px;
+}
+
+html[dir="ltr"] .main{
+  margin-right:0;
+  margin-left:270px;
+}
+
+.mobile-header{
+  display:none;
+}
+
+.topbar{
+  min-height:82px;
+
+  padding:15px 35px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  border-bottom:1px solid var(--border);
+
+  background:rgba(255,255,255,.92);
+}
+
+.page-title{
+  font-size:20px;
+  font-weight:800;
+}
+
+.page-subtitle{
+  margin-top:2px;
+  color:var(--muted);
+  font-size:10px;
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  padding:8px 12px;
+
+  border-radius:30px;
+
+  color:var(--success);
+  background:var(--successSoft);
+
+  font-size:9px;
+  font-weight:800;
+}
+
+.status-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--success);
+}
+
+.lang-btn{
+  min-width:54px;
+  height:36px;
+
+  border:1px solid var(--border);
+  border-radius:11px;
+
+  color:var(--green);
+  background:white;
+
+  font-size:10px;
+  font-weight:800;
+}
+
+.content{
+  width:min(1100px,calc(100% - 50px));
+  margin:0 auto;
+  padding:35px 0 60px;
+}
+
+.view{
+  display:none !important;
+  width:100%;
+}
+
+.view.active{
+  display:block !important;
+}
+
+
+/* ==================================================
+   HOME
+================================================== */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:32px;
+  border-radius:24px;
+  color:white;
+  background:linear-gradient(135deg,var(--dark),var(--green));
+  box-shadow:var(--shadow);
+}
+
+.hero-small{
+  font-size:9px;
+  opacity:.65;
+}
+
+.hero-title{
+  margin-top:7px;
+  font-size:28px;
+  font-weight:800;
+}
+
+.hero-text{
+  max-width:600px;
+  margin-top:8px;
+  color:rgba(255,255,255,.68);
+  font-size:11px;
+  line-height:2;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  margin-top:24px;
+}
+
+.home-card{
+  padding:22px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:white;
+  box-shadow:var(--shadow);
+}
+
+.card-icon{
+  width:53px;
+  height:53px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:15px;
+
+  color:white;
+  background:linear-gradient(135deg,var(--dark),var(--green2));
+
+  font-size:22px;
+}
+
+.home-card h3{
+  margin:15px 0 5px;
+  font-size:15px;
+}
+
+.home-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.9;
+}
+
+.card-link{
+  margin-top:15px;
+  padding:0;
+  border:0;
+  color:var(--green);
+  background:transparent;
+  font-size:10px;
+  font-weight:800;
+}
+
+
+/* ==================================================
+   SECTIONS
+================================================== */
+
+.section-box{
+  width:100%;
+  padding:25px;
+  border:1px solid var(--border);
+  border-radius:23px;
+  background:white;
+  box-shadow:var(--shadow);
+}
+
+.section-head{
+  margin-bottom:22px;
+}
+
+.section-title{
+  font-size:20px;
+  font-weight:800;
+}
+
+.section-desc{
+  margin-top:4px;
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.8;
+}
+
+
+/* ==================================================
+   INPUT / BUTTON
+================================================== */
+
+.manual-box{
+  display:flex;
+  gap:10px;
+  margin-bottom:18px;
+}
+
+.input{
+  width:100%;
+  min-width:0;
+  height:51px;
+  padding:0 15px;
+  outline:0;
+  border:1px solid var(--border);
+  border-radius:13px;
+  background:#fafcfb;
+  font-size:12px;
+}
+
+.input:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(0,104,56,.08);
+}
+
+.manual-box .input{
+  flex:1;
+}
+
+.btn{
+  border:0;
+  padding:14px 20px;
+  border-radius:13px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.btn-primary{
+  color:white;
+  background:linear-gradient(135deg,var(--dark),var(--green));
+}
+
+.btn-soft{
+  color:var(--green);
+  background:var(--soft);
+}
+
+.btn-deliver{
+  width:100%;
+  color:white;
+  background:linear-gradient(135deg,var(--green),var(--green2));
+}
+
+
+/* ==================================================
+   SCANNER
+================================================== */
+
+.scanner{
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  min-height:320px;
+  border-radius:20px;
+  background:#06150e;
+}
+
+.reader{
+  width:100%;
+  min-height:320px;
+}
+
+.reader video{
+  width:100% !important;
+  min-height:320px !important;
+  object-fit:cover !important;
+}
+
+.reader img,
+.reader [id$="__dashboard"]{
+  display:none !important;
+}
+
+.scanner-placeholder{
+  position:absolute;
+  z-index:5;
+  inset:0;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  color:white;
+  text-align:center;
+
+  background:radial-gradient(circle,#0c2619,#06150e 70%);
+}
+
+.scan-symbol{
+  width:68px;
+  height:68px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:13px;
+
+  border-radius:19px;
+
+  background:rgba(255,255,255,.08);
+
+  font-size:27px;
+}
+
+.scan-title{
+  font-size:13px;
+  font-weight:800;
+}
+
+.scan-desc{
+  margin-top:5px;
+  color:rgba(255,255,255,.48);
+  font-size:9px;
+}
+
+.scanner-btn{
+  width:100%;
+  margin-top:13px;
+}
+
+
+/* ==================================================
+   PERSON / PRIORITY
+================================================== */
+
+.person-result{
+  display:none;
+  margin-top:18px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:white;
+}
+
+.person-main{
+  padding:20px;
+  background:linear-gradient(135deg,#f3fbf7,#fff);
+}
+
+.person-header-line{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.person-label{
+  color:var(--muted);
+  font-size:9px;
+}
+
+.person-name{
+  margin-top:3px;
+  font-size:21px;
+  font-weight:800;
+}
+
+.person-id{
+  display:inline-block;
+  direction:ltr;
+  margin-top:9px;
+  padding:6px 10px;
+  border-radius:8px;
+  color:var(--green);
+  background:var(--soft);
+  font-size:10px;
+  font-weight:800;
+}
+
+.priority-badge{
+  flex:0 0 auto;
+
+  min-width:70px;
+
+  padding:10px 12px;
+
+  border-radius:13px;
+
+  text-align:center;
+
+  font-size:9px;
+  font-weight:800;
+
+  border:1px solid #e8d5a7;
+
+  color:#94630c;
+  background:#fff8e8;
+}
+
+.priority-number{
+  display:block;
+
+  margin-top:2px;
+
+  font-size:22px;
+  line-height:1.2;
+}
+
+.person-action{
+  padding:16px;
+  border-top:1px solid var(--border);
+}
+
+.delivered{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:13px;
+  border:1px solid #bce7ce;
+  border-radius:12px;
+  color:var(--success);
+  background:var(--successSoft);
+  font-size:11px;
+  font-weight:800;
+}
+
+
+/* ==================================================
+   SEARCH
+================================================== */
+
+.search-controls{
+  display:grid;
+  grid-template-columns:170px 1fr auto;
+  gap:10px;
+}
+
+.search-or{
+  margin:15px 0;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:var(--muted);
+  font-size:9px;
+}
+
+.search-or::before,
+.search-or::after{
+  content:"";
+  height:1px;
+  flex:1;
+  background:var(--border);
+}
+
+.search-results{
+  margin-top:22px;
+}
+
+.result-count{
+  margin-bottom:12px;
+  color:var(--muted);
+  font-size:10px;
+}
+
+.result-card{
+  margin-bottom:12px;
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:17px;
+  background:white;
+}
+
+.result-top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:15px;
+}
+
+.result-name{
+  font-size:15px;
+  font-weight:800;
+}
+
+.result-id{
+  direction:ltr;
+  color:var(--green);
+  font-size:11px;
+  font-weight:800;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.info-item{
+  padding:11px;
+  border-radius:10px;
+  background:#f6f9f7;
+}
+
+.info-item.priority-info{
+  background:#fff8e8;
+  border:1px solid #f1e0b7;
+}
+
+.info-label{
+  color:var(--muted);
+  font-size:8px;
+}
+
+.info-value{
+  margin-top:3px;
+  overflow-wrap:anywhere;
+  font-size:10px;
+  font-weight:700;
+}
+
+.priority-info .info-value{
+  color:#94630c;
+  font-size:16px;
+  font-weight:800;
+}
+
+.delivery-statuses{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+
+.badge{
+  padding:7px 10px;
+  border-radius:30px;
+  font-size:8px;
+  font-weight:800;
+}
+
+.badge.yes{
+  color:var(--success);
+  background:var(--successSoft);
+}
+
+.badge.no{
+  color:var(--warning);
+  background:var(--warningSoft);
+}
+
+
+/* ==================================================
+   STATISTICS
+================================================== */
+
+.stats-actions{
+  display:flex;
+  justify-content:flex-end;
+  margin-bottom:15px;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.stat-card{
+  position:relative;
+  overflow:hidden;
+  padding:22px;
+  border:1px solid var(--border);
+  border-radius:19px;
+  background:linear-gradient(145deg,#fff,#f7fbf9);
+}
+
+.stat-card.main-stat{
+  color:white;
+  border:0;
+  background:linear-gradient(135deg,var(--dark),var(--green));
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:9px;
+}
+
+.main-stat .stat-label{
+  color:rgba(255,255,255,.65);
+}
+
+.stat-number{
+  margin-top:5px;
+  font-size:35px;
+  font-weight:800;
+  line-height:1.2;
+}
+
+.stat-small{
+  margin-top:7px;
+  color:var(--muted);
+  font-size:8px;
+}
+
+.main-stat .stat-small{
+  color:rgba(255,255,255,.6);
+}
+
+.priority-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:20px 0;
+}
+
+.priority-stat{
+  padding:18px;
+  border:1px solid #eee2c4;
+  border-radius:17px;
+  background:linear-gradient(145deg,#fffdf8,#fff8e8);
+  text-align:center;
+}
+
+.priority-stat-label{
+  color:#9a711d;
+  font-size:9px;
+  font-weight:700;
+}
+
+.priority-stat-number{
+  margin-top:5px;
+  color:#7b5508;
+  font-size:28px;
+  font-weight:800;
+}
+
+.delivery-stat-box{
+  margin-top:15px;
+  padding:20px;
+  border:1px solid var(--border);
+  border-radius:19px;
+  background:white;
+}
+
+.delivery-stat-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:17px;
+}
+
+.delivery-stat-title{
+  font-size:14px;
+  font-weight:800;
+}
+
+.delivery-percent{
+  color:var(--green);
+  font-size:10px;
+  font-weight:800;
+}
+
+.progress{
+  width:100%;
+  height:10px;
+  overflow:hidden;
+  border-radius:20px;
+  background:#e9efec;
+}
+
+.progress-bar{
+  width:0;
+  height:100%;
+  border-radius:20px;
+  background:linear-gradient(90deg,var(--green),var(--green2));
+  transition:width .7s ease;
+}
+
+.stats-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:15px;
+}
+
+.stats-detail{
+  padding:13px;
+  border-radius:12px;
+  background:#f7faf8;
+}
+
+.stats-detail-label{
+  color:var(--muted);
+  font-size:8px;
+}
+
+.stats-detail-value{
+  margin-top:3px;
+  font-size:17px;
+  font-weight:800;
+}
+
+.stats-updated{
+  margin-top:18px;
+  color:var(--muted);
+  font-size:8px;
+  text-align:center;
+}
+
+
+/* ==================================================
+   ALERT / LOADING / TOAST
+================================================== */
+
+.alert{
+  display:none;
+  margin-top:15px;
+  padding:13px;
+  border-radius:12px;
+  color:var(--danger);
+  background:var(--dangerSoft);
+  font-size:10px;
+  text-align:center;
+}
+
+.loading{
+  display:none;
+  position:fixed;
+  z-index:9999;
+  inset:0;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,38,21,.70);
+  backdrop-filter:blur(6px);
+}
+
+.loading.active{
+  display:flex;
+}
+
+.loading-box{
+  min-width:190px;
+  padding:25px;
+  border-radius:20px;
+  background:white;
+  text-align:center;
+}
+
+.spinner{
+  width:40px;
+  height:40px;
+  margin:0 auto 12px;
+  border:4px solid #e6eee9;
+  border-top-color:var(--green);
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+.loading-text{
+  color:var(--green);
+  font-size:10px;
+  font-weight:800;
+}
+
+.toast{
+  position:fixed;
+  z-index:10000;
+  left:50%;
+  bottom:25px;
+  width:calc(100% - 35px);
+  max-width:400px;
+  padding:13px;
+  transform:translate(-50%,100px);
+  opacity:0;
+  border-radius:13px;
+  color:white;
+  background:#10251a;
+  text-align:center;
+  font-size:10px;
+  transition:.3s;
+}
+
+.toast.show{
+  transform:translate(-50%,0);
+  opacity:1;
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media(max-width:850px){
+
+  .sidebar{
+    width:min(82vw,300px);
+    height:100dvh;
+    transform:translateX(105%);
+    transition:transform .28s cubic-bezier(.4,0,.2,1);
+    box-shadow:-20px 0 50px rgba(0,0,0,.22);
+  }
+
+  html[dir="ltr"] .sidebar{
+    transform:translateX(-105%);
+  }
+
+  .sidebar.open,
+  html[dir="ltr"] .sidebar.open{
+    transform:translateX(0);
+  }
+
+  .main,
+  html[dir="ltr"] .main{
+    width:100%;
+    margin:0;
+  }
+
+  .mobile-header{
+    position:sticky;
+    z-index:1800;
+    top:0;
+
+    display:grid;
+    grid-template-columns:42px 1fr 42px;
+    align-items:center;
+
+    min-height:calc(62px + env(safe-area-inset-top));
+
+    padding:
+      calc(10px + env(safe-area-inset-top))
+      14px
+      10px;
+
+    color:white;
+
+    background:linear-gradient(135deg,var(--dark),var(--green));
+  }
+
+  .mobile-brand{
+    direction:ltr;
+    text-align:center;
+    font-size:11px;
+    font-weight:800;
+  }
+
+  .menu-btn{
+    position:relative;
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:12px;
+    background:rgba(255,255,255,.12);
+  }
+
+  .menu-btn::before,
+  .menu-btn::after,
+  .menu-btn span{
+    content:"";
+    position:absolute;
+    left:11px;
+    width:20px;
+    height:2px;
+    border-radius:5px;
+    background:white;
+    transition:.25s;
+  }
+
+  .menu-btn::before{
+    top:14px;
+  }
+
+  .menu-btn span{
+    top:20px;
+  }
+
+  .menu-btn::after{
+    top:26px;
+  }
+
+  .menu-btn.open::before{
+    top:20px;
+    transform:rotate(45deg);
+  }
+
+  .menu-btn.open::after{
+    top:20px;
+    transform:rotate(-45deg);
+  }
+
+  .menu-btn.open span{
+    opacity:0;
+  }
+
+  .mobile-lang{
+    width:42px;
+    height:42px;
+
+    border:0;
+    border-radius:12px;
+
+    color:white;
+    background:rgba(255,255,255,.12);
+
+    font-size:9px;
+    font-weight:800;
+  }
+
+  .topbar{
+    min-height:auto;
+    padding:18px 15px;
+  }
+
+  .topbar .lang-btn,
+  .status{
+    display:none;
+  }
+
+  .page-title{
+    font-size:19px;
+  }
+
+  .page-subtitle{
+    font-size:9px;
+  }
+
+  .content{
+    width:100%;
+    margin:0;
+    padding:18px 12px 45px;
+  }
+
+  .hero{
+    padding:24px 20px;
+    border-radius:20px;
+  }
+
+  .hero-title{
+    font-size:22px;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .home-card{
+    padding:18px;
+  }
+
+  .section-box{
+    padding:16px;
+    border-radius:19px;
+  }
+
+  .manual-box{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+
+  .manual-box .btn{
+    width:100%;
+  }
+
+  .scanner,
+  .reader{
+    min-height:280px;
+  }
+
+  .reader video{
+    height:280px !important;
+    min-height:280px !important;
+  }
+
+  .search-controls{
+    grid-template-columns:1fr;
+  }
+
+  .search-controls .btn{
+    width:100%;
+  }
+
+  .result-top{
+    flex-direction:column;
+    gap:5px;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .delivery-statuses{
+    flex-direction:column;
+  }
+
+  .badge{
+    width:100%;
+    text-align:center;
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr;
+  }
+
+  .priority-stats{
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+  }
+
+  .priority-stat{
+    padding:13px 5px;
+  }
+
+  .priority-stat-number{
+    font-size:23px;
+  }
+
+  .stats-actions .btn{
+    width:100%;
+  }
+
+  .welcome-card{
+    padding:35px 20px 25px;
+  }
+
+  .welcome-title{
+    font-size:20px;
+  }
+
+  .welcome-quote-ar{
+    font-size:14px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ==================================================
+     SPLASH
+================================================== -->
+
+<div id="splash" class="splash">
+
+  <div class="splash-content">
+
+    <div class="logo-animation">
+
+      <div class="logo-ring"></div>
+
+      <div class="logo-half logo-left">
+        <img
+          src="https://i.postimg.cc/BvLv7FDL/images.jpg"
+          alt="IAC"
+        >
+      </div>
+
+      <div class="logo-half logo-right">
+        <img
+          src="https://i.postimg.cc/BvLv7FDL/images.jpg"
+          alt="IAC"
+        >
+      </div>
+
+    </div>
+
+    <div class="splash-title">
+      مؤسسة الإغاثة الدولية
+    </div>
+
+    <div class="splash-campaign">
+      November Sham 2026
+    </div>
+
+    <div class="splash-line"></div>
+
+  </div>
+
+</div>
+
+
+<!-- ==================================================
+     WELCOME
+================================================== -->
+
+<div id="welcomeScreen" class="welcome-screen">
+
+  <div class="welcome-decoration one"></div>
+  <div class="welcome-decoration two"></div>
+
+  <div class="welcome-card">
+
+    <div class="welcome-logo-wrap">
+
+      <div class="welcome-logo-glow"></div>
+
+      <img
+        class="welcome-logo"
+        src="https://i.postimg.cc/BvLv7FDL/images.jpg"
+        alt="IAC"
+      >
+
+    </div>
+
+    <div class="welcome-mini">
+      INTERNATIONAL AID CAMPAIGN
+    </div>
+
+    <div class="welcome-title">
+      مؤسسة الإغاثة الدولية
+    </div>
+
+    <div class="welcome-divider"></div>
+
+    <div
+      id="welcomeQuoteAr"
+      class="welcome-quote-ar"
+    ></div>
+
+    <div
+      id="welcomeQuoteEn"
+      class="welcome-quote-en"
+    ></div>
+
+    <button
+      id="welcomeButton"
+      class="welcome-button"
+      onclick="enterSystem()"
+    >
+      الدخول إلى النظام
+    </button>
+
+    <div
+      id="welcomeCountdown"
+      class="welcome-countdown"
+    ></div>
+
+  </div>
+
+</div>
+
+
+<!-- SIDEBAR OVERLAY -->
+
+<div
+  id="sidebarOverlay"
+  class="sidebar-overlay"
+  onclick="closeSidebar()"
+></div>
+
+
+<!-- ==================================================
+     SIDEBAR
+================================================== -->
+
+<aside id="sidebar" class="sidebar">
+
+  <div class="brand">
+
+    <div class="brand-logo">
+
+      <img
+        src="https://i.postimg.cc/BvLv7FDL/images.jpg"
+        alt="IAC"
+      >
+
+    </div>
+
+    <div>
+
+      <div
+        class="brand-name"
+        data-i18n="organization"
+      >
+        مؤسسة الإغاثة الدولية
+      </div>
+
+      <div class="brand-en">
+        INTERNATIONAL AID CAMPAIGN
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="campaign">
+    November Sham 2026
+  </div>
+
+
+  <nav class="nav">
+
+    <button
+      class="nav-btn active"
+      data-view="home"
+      onclick="navigate('home')"
+    >
+      <span class="nav-icon">⌂</span>
+      <span data-i18n="home">الرئيسية</span>
+    </button>
+
+
+    <button
+      class="nav-btn"
+      data-view="card"
+      onclick="navigate('card')"
+    >
+      <span class="nav-icon">▣</span>
+      <span data-i18n="cardDelivery">تسليم البطاقات</span>
+    </button>
+
+
+    <button
+      class="nav-btn"
+      data-view="basket"
+      onclick="navigate('basket')"
+    >
+      <span class="nav-icon">▤</span>
+      <span data-i18n="basketDelivery">تسليم السلة</span>
+    </button>
+
+
+    <button
+      class="nav-btn"
+      data-view="search"
+      onclick="navigate('search')"
+    >
+      <span class="nav-icon">⌕</span>
+      <span data-i18n="searchBeneficiary">البحث عن مستفيد</span>
+    </button>
+
+
+    <button
+      class="nav-btn"
+      data-view="stats"
+      onclick="navigate('stats')"
+    >
+      <span class="nav-icon">▥</span>
+      <span data-i18n="statistics">الإحصائيات</span>
+    </button>
+
+  </nav>
+
+
+  <div class="sidebar-footer">
+    IAC Distribution Management System
+    <br>
+    November Sham 2026
+  </div>
+
+</aside>
+
+
+<!-- ==================================================
+     MAIN
+================================================== -->
+
+<div class="main">
+
+
+  <!-- MOBILE HEADER -->
+
+  <div class="mobile-header">
+
+    <button
+      id="menuButton"
+      class="menu-btn"
+      onclick="toggleSidebar()"
+      aria-label="Menu"
+    >
+      <span></span>
+    </button>
+
+    <div class="mobile-brand">
+      IAC • November Sham 2026
+    </div>
+
+    <button
+      id="mobileLangButton"
+      class="mobile-lang"
+      onclick="toggleLanguage()"
+    >
+      EN
+    </button>
+
+  </div>
+
+
+  <!-- TOPBAR -->
+
+  <header class="topbar">
+
+    <div>
+
+      <div
+        id="pageTitle"
+        class="page-title"
+      >
+        الرئيسية
+      </div>
+
+      <div
+        id="pageSubtitle"
+        class="page-subtitle"
+      >
+        نظام إدارة عمليات التوزيع
+      </div>
+
+    </div>
+
+
+    <div class="top-actions">
+
+      <button
+        id="langButton"
+        class="lang-btn"
+        onclick="toggleLanguage()"
+      >
+        EN
+      </button>
+
+      <div class="status">
+
+        <span class="status-dot"></span>
+
+        <span data-i18n="connected">
+          النظام متصل
+        </span>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main class="content">
+
+
+    <!-- ==================================================
+         HOME
+    =================================================== -->
+
+    <section
+      id="view-home"
+      class="view active"
+    >
+
+      <div class="hero">
+
+        <div class="hero-small">
+          INTERNATIONAL AID CAMPAIGN
+        </div>
+
+        <div class="hero-title">
+          November Sham 2026
+        </div>
+
+        <div
+          class="hero-text"
+          data-i18n="heroText"
+        >
+          نظام مركزي لإدارة عمليات التوزيع والتحقق من المستفيدين وتسليم البطاقات والسلال ومتابعة الإحصائيات.
+        </div>
+
+      </div>
+
+
+      <div class="cards">
+
+
+        <div class="home-card">
+
+          <div class="card-icon">▣</div>
+
+          <h3 data-i18n="cardDelivery">
+            تسليم البطاقات
+          </h3>
+
+          <p data-i18n="cardDescription">
+            قراءة رمز QR والتحقق من المستفيد وتسجيل عملية تسليم البطاقة.
+          </p>
+
+          <button
+            class="card-link"
+            onclick="navigate('card')"
+            data-i18n="openSection"
+          >
+            فتح القسم
+          </button>
+
+        </div>
+
+
+        <div class="home-card">
+
+          <div class="card-icon">▤</div>
+
+          <h3 data-i18n="basketDelivery">
+            تسليم السلة
+          </h3>
+
+          <p data-i18n="basketDescription">
+            إدخال ID يدويًا أو قراءة QR والتحقق وتسجيل تسليم السلة.
+          </p>
+
+          <button
+            class="card-link"
+            onclick="navigate('basket')"
+            data-i18n="openSection"
+          >
+            فتح القسم
+          </button>
+
+        </div>
+
+
+        <div class="home-card">
+
+          <div class="card-icon">⌕</div>
+
+          <h3 data-i18n="searchBeneficiary">
+            البحث عن مستفيد
+          </h3>
+
+          <p data-i18n="searchDescription">
+            البحث بواسطة ID أو الاسم أو اسم الزوج - الزوجه أو QR.
+          </p>
+
+          <button
+            class="card-link"
+            onclick="navigate('search')"
+            data-i18n="openSection"
+          >
+            فتح القسم
+          </button>
+
+        </div>
+
+
+        <div class="home-card">
+
+          <div class="card-icon">▥</div>
+
+          <h3 data-i18n="statistics">
+            الإحصائيات
+          </h3>
+
+          <p data-i18n="statsDescription">
+            متابعة عدد المستفيدين وحالة توزيع البطاقات والسلال والأولويات.
+          </p>
+
+          <button
+            class="card-link"
+            onclick="navigate('stats')"
+            data-i18n="viewStats"
+          >
+            عرض الإحصائيات
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         CARD
+    =================================================== -->
+
+    <section
+      id="view-card"
+      class="view"
+    >
+
+      <div class="section-box">
+
+        <div class="section-head">
+
+          <div
+            class="section-title"
+            data-i18n="cardDelivery"
+          >
+            تسليم البطاقات
+          </div>
+
+          <div
+            class="section-desc"
+            data-i18n="cardSectionDesc"
+          >
+            امسح رمز QR للتحقق من المستفيد وتسجيل التسليم.
+          </div>
+
+        </div>
+
+
+        <div class="scanner">
+
+          <div
+            id="reader-card"
+            class="reader"
+          ></div>
+
+          <div
+            id="placeholder-card"
+            class="scanner-placeholder"
+          >
+
+            <div class="scan-symbol">▣</div>
+
+            <div
+              class="scan-title"
+              data-i18n="readyScan"
+            >
+              جاهز لمسح رمز QR
+            </div>
+
+            <div
+              class="scan-desc"
+              data-i18n="pressCamera"
+            >
+              اضغط على الزر أدناه لتشغيل الكاميرا
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <button
+          id="scan-card-btn"
+          class="btn btn-primary scanner-btn"
+          onclick="startScanner('card')"
+          data-i18n="startCamera"
+        >
+          تشغيل الكاميرا ومسح QR
+        </button>
+
+
+        <div
+          id="alert-card"
+          class="alert"
+        ></div>
+
+
+        <div
+          id="result-card"
+          class="person-result"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         BASKET
+    =================================================== -->
+
+    <section
+      id="view-basket"
+      class="view"
+    >
+
+      <div class="section-box">
+
+        <div class="section-head">
+
+          <div
+            class="section-title"
+            data-i18n="basketDelivery"
+          >
+            تسليم السلة
+          </div>
+
+          <div
+            class="section-desc"
+            data-i18n="basketSectionDesc"
+          >
+            أدخل ID المستفيد أو استخدم QR للتحقق من بياناته وتسجيل التسليم.
+          </div>
+
+        </div>
+
+
+        <div class="manual-box">
+
+          <input
+            id="basketId"
+            class="input"
+            type="text"
+            autocomplete="off"
+            placeholder="أدخل ID المستفيد"
+            data-placeholder-ar="أدخل ID المستفيد"
+            data-placeholder-en="Enter beneficiary ID"
+            onkeydown="
+              if(event.key==='Enter'){
+                lookupManualBasket();
+              }
+            "
+          >
+
+          <button
+            class="btn btn-primary"
+            onclick="lookupManualBasket()"
+            data-i18n="findBeneficiary"
+          >
+            بحث عن المستفيد
+          </button>
+
+        </div>
+
+
+        <div class="scanner">
+
+          <div
+            id="reader-basket"
+            class="reader"
+          ></div>
+
+          <div
+            id="placeholder-basket"
+            class="scanner-placeholder"
+          >
+
+            <div class="scan-symbol">▣</div>
+
+            <div
+              class="scan-title"
+              data-i18n="scanQr"
+            >
+              قراءة QR
+            </div>
+
+            <div
+              class="scan-desc"
+              data-i18n="cameraInstead"
+            >
+              يمكنك استخدام الكاميرا بدل إدخال ID
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <button
+          id="scan-basket-btn"
+          class="btn btn-primary scanner-btn"
+          onclick="startScanner('basket')"
+          data-i18n="startCamera"
+        >
+          تشغيل الكاميرا ومسح QR
+        </button>
+
+
+        <div
+          id="alert-basket"
+          class="alert"
+        ></div>
+
+
+        <div
+          id="result-basket"
+          class="person-result"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         SEARCH
+    =================================================== -->
+
+    <section
+      id="view-search"
+      class="view"
+    >
+
+      <div class="section-box">
+
+        <div class="section-head">
+
+          <div
+            class="section-title"
+            data-i18n="searchBeneficiary"
+          >
+            البحث عن مستفيد
+          </div>
+
+          <div
+            class="section-desc"
+            data-i18n="searchSectionDesc"
+          >
+            ابحث بواسطة ID أو الاسم الثلاثي أو اسم الزوج - الزوجه أو QR.
+          </div>
+
+        </div>
+
+
+        <div class="search-controls">
+
+          <select
+            id="searchType"
+            class="input"
+          >
+            <option value="all" data-i18n="allSearch">
+              بحث شامل
+            </option>
+
+            <option value="id">
+              ID
+            </option>
+
+            <option value="name" data-i18n="fullName">
+              الاسم الثلاثي
+            </option>
+
+            <option value="spouse" data-i18n="spouse">
+              اسم الزوج - الزوجه
+            </option>
+          </select>
+
+
+          <input
+            id="searchQuery"
+            class="input"
+            type="text"
+            autocomplete="off"
+            placeholder="اكتب ID أو الاسم..."
+            data-placeholder-ar="اكتب ID أو الاسم..."
+            data-placeholder-en="Enter ID or name..."
+            onkeydown="
+              if(event.key==='Enter'){
+                performSearch();
+              }
+            "
+          >
+
+
+          <button
+            class="btn btn-primary"
+            onclick="performSearch()"
+            data-i18n="search"
+          >
+            بحث
+          </button>
+
+        </div>
+
+
+        <div
+          class="search-or"
+          data-i18n="searchByQr"
+        >
+          أو البحث باستخدام QR
+        </div>
+
+
+        <div class="scanner">
+
+          <div
+            id="reader-search"
+            class="reader"
+          ></div>
+
+          <div
+            id="placeholder-search"
+            class="scanner-placeholder"
+          >
+
+            <div class="scan-symbol">⌕</div>
+
+            <div
+              class="scan-title"
+              data-i18n="searchByQr"
+            >
+              البحث باستخدام QR
+            </div>
+
+            <div
+              class="scan-desc"
+              data-i18n="cameraStops"
+            >
+              تتوقف الكاميرا بعد قراءة الرمز
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <button
+          id="scan-search-btn"
+          class="btn btn-soft scanner-btn"
+          onclick="startScanner('search')"
+          data-i18n="cameraSearch"
+        >
+          تشغيل الكاميرا للبحث
+        </button>
+
+
+        <div
+          id="alert-search"
+          class="alert"
+        ></div>
+
+
+        <div
+          id="searchResults"
+          class="search-results"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         STATISTICS
+    =================================================== -->
+
+    <section
+      id="view-stats"
+      class="view"
+    >
+
+      <div class="section-box">
+
+        <div class="section-head">
+
+          <div
+            class="section-title"
+            data-i18n="distributionStats"
+          >
+            إحصائيات التوزيع
+          </div>
+
+          <div
+            class="section-desc"
+            data-i18n="statsSectionDesc"
+          >
+            إحصائيات مباشرة لحالة التوزيع والأولويات.
+          </div>
+
+        </div>
+
+
+        <div class="stats-actions">
+
+          <button
+            class="btn btn-soft"
+            onclick="loadStats(true)"
+            data-i18n="refreshStats"
+          >
+            تحديث الإحصائيات
+          </button>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+
+          <div class="stat-card main-stat">
+
+            <div
+              class="stat-label"
+              data-i18n="totalBeneficiaries"
+            >
+              إجمالي المستفيدين
+            </div>
+
+            <div
+              id="statTotal"
+              class="stat-number"
+            >
+              —
+            </div>
+
+            <div
+              class="stat-small"
+              data-i18n="totalDesc"
+            >
+             محسوب من الأسماء المسجلة 
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div
+              class="stat-label"
+              data-i18n="cardsDelivered"
+            >
+              تم تسليم البطاقة
+            </div>
+
+            <div
+              id="statCardDelivered"
+              class="stat-number"
+            >
+              —
+            </div>
+
+            <div
+              class="stat-small"
+              data-i18n="cardCountDesc"
+            >
+              عدد المستفيدين المستلمين للبطاقة
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div
+              class="stat-label"
+              data-i18n="basketsDelivered"
+            >
+              تم تسليم السلة
+            </div>
+
+            <div
+              id="statBasketDelivered"
+              class="stat-number"
+            >
+              —
+            </div>
+
+            <div
+              class="stat-small"
+              data-i18n="basketCountDesc"
+            >
+              عدد المستفيدين المستلمين للسلة
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- PRIORITIES -->
+
+        <div class="delivery-stat-box">
+
+          <div class="delivery-stat-header">
+
+            <div
+              class="delivery-stat-title"
+              data-i18n="priorityDistribution"
+            >
+              توزيع المستفيدين حسب الأولوية
+            </div>
+
+          </div>
+
+
+          <div class="priority-stats">
+
+
+            <div class="priority-stat">
+
+              <div
+                class="priority-stat-label"
+                data-i18n="priority1"
+              >
+                الأولوية 1
+              </div>
+
+              <div
+                id="priority1Count"
+                class="priority-stat-number"
+              >
+                —
+              </div>
+
+            </div>
+
+
+            <div class="priority-stat">
+
+              <div
+                class="priority-stat-label"
+                data-i18n="priority2"
+              >
+                الأولوية 2
+              </div>
+
+              <div
+                id="priority2Count"
+                class="priority-stat-number"
+              >
+                —
+              </div>
+
+            </div>
+
+
+            <div class="priority-stat">
+
+              <div
+                class="priority-stat-label"
+                data-i18n="priority3"
+              >
+                الأولوية 3
+              </div>
+
+              <div
+                id="priority3Count"
+                class="priority-stat-number"
+              >
+                —
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+        <!-- CARD STATISTICS -->
+
+        <div class="delivery-stat-box">
+
+          <div class="delivery-stat-header">
+
+            <div
+              class="delivery-stat-title"
+              data-i18n="cardDistribution"
+            >
+              توزيع البطاقات
+            </div>
+
+            <div
+              id="cardPercent"
+              class="delivery-percent"
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <div class="progress">
+
+            <div
+              id="cardProgress"
+              class="progress-bar"
+            ></div>
+
+          </div>
+
+
+          <div class="stats-details">
+
+            <div class="stats-detail">
+
+              <div
+                class="stats-detail-label"
+                data-i18n="delivered"
+              >
+                تم التسليم
+              </div>
+
+              <div
+                id="cardYes"
+                class="stats-detail-value"
+              >
+                —
+              </div>
+
+            </div>
+
+
+            <div class="stats-detail">
+
+              <div
+                class="stats-detail-label"
+                data-i18n="notDelivered"
+              >
+                لم يتم التسليم
+              </div>
+
+              <div
+                id="cardNo"
+                class="stats-detail-value"
+              >
+                —
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- BASKET STATISTICS -->
+
+        <div class="delivery-stat-box">
+
+          <div class="delivery-stat-header">
+
+            <div
+              class="delivery-stat-title"
+              data-i18n="basketDistribution"
+            >
+              توزيع السلال
+            </div>
+
+            <div
+              id="basketPercent"
+              class="delivery-percent"
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <div class="progress">
+
+            <div
+              id="basketProgress"
+              class="progress-bar"
+            ></div>
+
+          </div>
+
+
+          <div class="stats-details">
+
+            <div class="stats-detail">
+
+              <div
+                class="stats-detail-label"
+                data-i18n="delivered"
+              >
+                تم التسليم
+              </div>
+
+              <div
+                id="basketYes"
+                class="stats-detail-value"
+              >
+                —
+              </div>
+
+            </div>
+
+
+            <div class="stats-detail">
+
+              <div
+                class="stats-detail-label"
+                data-i18n="notDelivered"
+              >
+                لم يتم التسليم
+              </div>
+
+              <div
+                id="basketNo"
+                class="stats-detail-value"
+              >
+                —
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="statsUpdated"
+          class="stats-updated"
+        ></div>
+
+
+        <div
+          id="alert-stats"
+          class="alert"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+</div>
+
+
+<!-- LOADING -->
+
+<div id="loading" class="loading">
+
+  <div class="loading-box">
+
+    <div class="spinner"></div>
+
+    <div
+      id="loadingText"
+      class="loading-text"
+    >
+      جاري المعالجة...
+    </div>
+
+  </div>
+
+</div>
+
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
+<script>
+
+/* ==================================================
+   CONFIG
+================================================== */
+
+const API_URL =
+'https://script.google.com/macros/s/AKfycbyzMTR2Iqg_a8V-YBJNyLTwmSFvnEGj3XuJ-hMylGXW0yEc8zvgxMRnW4o-XuhZRL3Tgg/exec';
+
+
+let currentLanguage = 'ar';
+let currentView = 'home';
+
+let scanner = null;
+let scannerType = null;
+let scannerRunning = false;
+let scannerProcessing = false;
+
+let currentCardPerson = null;
+let currentBasketPerson = null;
+
+let lastSearchResults = [];
+
+let currentStats = null;
+
+let toastTimer = null;
+
+let welcomeTimer = null;
+let welcomeSeconds = 15;
+
+
+/* ==================================================
+   TRANSLATIONS
+================================================== */
+
+const translations = {
+
+  ar:{
+
+    organization:'مؤسسة الإغاثة الدولية',
+
+    home:'الرئيسية',
+
+    cardDelivery:'تسليم البطاقات',
+
+    basketDelivery:'تسليم السلة',
+
+    searchBeneficiary:'البحث عن مستفيد',
+
+    statistics:'الإحصائيات',
+
+    connected:'النظام متصل',
+
+    heroText:
+      'نظام مركزي لإدارة عمليات التوزيع والتحقق من المستفيدين وتسليم البطاقات والسلال ومتابعة الإحصائيات.',
+
+    cardDescription:
+      'قراءة رمز QR والتحقق من المستفيد وتسجيل عملية تسليم البطاقة.',
+
+    basketDescription:
+      'إدخال ID يدويًا أو قراءة QR والتحقق وتسجيل تسليم السلة.',
+
+    searchDescription:
+      'البحث بواسطة ID أو الاسم أو اسم الزوج - الزوجه أو QR.',
+
+    statsDescription:
+      'متابعة عدد المستفيدين وحالة توزيع البطاقات والسلال والأولويات.',
+
+    openSection:'فتح القسم ←',
+
+    viewStats:'عرض الإحصائيات ←',
+
+    cardSectionDesc:
+      'امسح رمز QR للتحقق من المستفيد وتسجيل التسليم.',
+
+    basketSectionDesc:
+      'أدخل ID المستفيد أو استخدم QR للتحقق من بياناته وتسجيل التسليم.',
+
+    searchSectionDesc:
+      'ابحث بواسطة ID أو الاسم الثلاثي أو اسم الزوج - الزوجه أو QR.',
+
+    statsSectionDesc:
+      'إحصائيات مباشرة لحالة التوزيع والأولويات.',
+
+    readyScan:'جاهز لمسح رمز QR',
+
+    pressCamera:
+      'اضغط على الزر أدناه لتشغيل الكاميرا',
+
+    startCamera:
+      'تشغيل الكاميرا ومسح QR',
+
+    cameraRunning:
+      'الكاميرا تعمل - وجّهها نحو QR',
+
+    startingCamera:
+      'جاري تشغيل الكاميرا...',
+
+    retryCamera:
+      'إعادة محاولة تشغيل الكاميرا',
+
+    scanQr:'قراءة QR',
+
+    cameraInstead:
+      'يمكنك استخدام الكاميرا بدل إدخال ID',
+
+    findBeneficiary:
+      'بحث عن المستفيد',
+
+    allSearch:
+      'بحث شامل',
+
+    fullName:
+      'الاسم الثلاثي',
+
+    spouse:
+      'اسم الزوج - الزوجه',
+
+    phone:
+      'الهاتف',
+
+    priority:
+      'الأولوية',
+
+    search:'بحث',
+
+    searchByQr:
+      'أو البحث باستخدام QR',
+
+    cameraStops:
+      'تتوقف الكاميرا بعد قراءة الرمز',
+
+    cameraSearch:
+      'تشغيل الكاميرا للبحث',
+
+    distributionStats:
+      'إحصائيات التوزيع',
+
+    refreshStats:
+      '↻ تحديث الإحصائيات',
+
+    totalBeneficiaries:
+      'إجمالي المستفيدين',
+
+    totalDesc:
+      'محسوب من الأسماء المسجلة  ',
+
+    cardsDelivered:
+      'تم تسليم البطاقة',
+
+    basketsDelivered:
+      'تم تسليم السلة',
+
+    cardCountDesc:
+      'عدد المستفيدين المستلمين للبطاقة',
+
+    basketCountDesc:
+      'عدد المستفيدين المستلمين للسلة',
+
+    priorityDistribution:
+      'توزيع المستفيدين حسب الأولوية',
+
+    priority1:
+      'الأولوية 1',
+
+    priority2:
+      'الأولوية 2',
+
+    priority3:
+      'الأولوية 3',
+
+    cardDistribution:
+      'توزيع البطاقات',
+
+    basketDistribution:
+      'توزيع السلال',
+
+    delivered:
+      'تم التسليم',
+
+    notDelivered:
+      'لم يتم التسليم',
+
+    deliveryRate:
+      'نسبة التسليم',
+
+    beneficiaryName:
+      'الاسم الثلاثي',
+
+    card:
+      'البطاقة',
+
+    basket:
+      'السلة',
+
+    alreadyCard:
+      'تم تسليم البطاقة لهذا المستفيد مسبقًا',
+
+    alreadyBasket:
+      'تم تسليم السلة لهذا المستفيد مسبقًا',
+
+    deliverCard:
+      'تسليم البطاقة',
+
+    deliverBasket:
+      'تسليم السلة',
+
+    searching:
+      'جاري البحث عن بيانات المستفيد...',
+
+    searchDatabase:
+      'جاري البحث في بيانات المستفيدين...',
+
+    processing:
+      'جاري المعالجة...',
+
+    savingCard:
+      'جاري تسجيل تسليم البطاقة...',
+
+    savingBasket:
+      'جاري تسجيل تسليم السلة...',
+
+    updatingStats:
+      'جاري تحديث الإحصائيات...',
+
+    enterId:
+      'يرجى إدخال ID المستفيد.',
+
+    enterSearch:
+      'يرجى إدخال قيمة للبحث.',
+
+    connectionError:
+      'تعذر الاتصال بقاعدة البيانات.',
+
+    cameraError:
+      'تعذر تشغيل الكاميرا. تأكد من منح الموقع صلاحية استخدام الكاميرا.',
+
+    noResults:
+      'لم يتم العثور على نتائج مطابقة.',
+
+    resultsFound:
+      'تم العثور على',
+
+    resultWord:
+      'نتيجة',
+
+    lastUpdate:
+      'آخر تحديث',
+
+    cardYes:
+      '✓ البطاقة: تم التسليم',
+
+    cardNo:
+      '○ البطاقة: لم يتم التسليم',
+
+    basketYes:
+      '✓ السلة: تم التسليم',
+
+    basketNo:
+      '○ السلة: لم يتم التسليم',
+
+    welcomeButton:
+      'الدخول إلى النظام',
+
+    autoEnter:
+      'سيتم الانتقال تلقائيًا خلال',
+
+    seconds:
+      'ثانية',
+
+    homeSubtitle:
+      'نظام إدارة عمليات التوزيع',
+
+    cardSubtitle:
+      'التحقق من المستفيد وتسجيل تسليم البطاقة',
+
+    basketSubtitle:
+      'التحقق من المستفيد وتسجيل تسليم السلة',
+
+    searchSubtitle:
+      'البحث في بيانات المستفيدين',
+
+    statsSubtitle:
+      'متابعة عمليات التوزيع ونسب الإنجاز'
+  },
+
+
+  en:{
+
+    organization:
+      'International Aid Campaign',
+
+    home:'Home',
+
+    cardDelivery:
+      'Card Distribution',
+
+    basketDelivery:
+      'Basket Distribution',
+
+    searchBeneficiary:
+      'Beneficiary Search',
+
+    statistics:
+      'Statistics',
+
+    connected:
+      'System Online',
+
+    heroText:
+      'A centralized system for beneficiary verification, card and basket distribution, and real-time statistics.',
+
+    cardDescription:
+      'Scan the QR code, verify the beneficiary and register card delivery.',
+
+    basketDescription:
+      'Enter an ID manually or scan QR to verify and register basket delivery.',
+
+    searchDescription:
+      'Search by ID, beneficiary name, spouse name, or QR code.',
+
+    statsDescription:
+      'Monitor beneficiaries, card and basket distribution, and priority levels.',
+
+    openSection:
+      'Open section →',
+
+    viewStats:
+      'View statistics →',
+
+    cardSectionDesc:
+      'Scan the QR code to verify the beneficiary and register card delivery.',
+
+    basketSectionDesc:
+      'Enter the beneficiary ID or scan QR to verify and register basket delivery.',
+
+    searchSectionDesc:
+      'Search by ID, full name, spouse name, or QR code.',
+
+    statsSectionDesc:
+      'Live distribution and beneficiary priority statistics.',
+
+    readyScan:
+      'Ready to scan QR',
+
+    pressCamera:
+      'Press the button below to start the camera',
+
+    startCamera:
+      'Start Camera & Scan QR',
+
+    cameraRunning:
+      'Camera active - point it at the QR code',
+
+    startingCamera:
+      'Starting camera...',
+
+    retryCamera:
+      'Retry Camera',
+
+    scanQr:
+      'Scan QR',
+
+    cameraInstead:
+      'You can use the camera instead of entering the ID',
+
+    findBeneficiary:
+      'Find Beneficiary',
+
+    allSearch:
+      'All Fields',
+
+    fullName:
+      'Full Name',
+
+    spouse:
+      'Spouse Name',
+
+    phone:
+      'Phone',
+
+    priority:
+      'Priority',
+
+    search:
+      'Search',
+
+    searchByQr:
+      'Or search using QR',
+
+    cameraStops:
+      'The camera stops automatically after scanning',
+
+    cameraSearch:
+      'Start Camera to Search',
+
+    distributionStats:
+      'Distribution Statistics',
+
+    refreshStats:
+      '↻ Refresh Statistics',
+
+    totalBeneficiaries:
+      'Total Beneficiaries',
+
+    totalDesc:
+      'Calculated from registered names in column D',
+
+    cardsDelivered:
+      'Cards Delivered',
+
+    basketsDelivered:
+      'Baskets Delivered',
+
+    cardCountDesc:
+      'Beneficiaries who received their cards',
+
+    basketCountDesc:
+      'Beneficiaries who received their baskets',
+
+    priorityDistribution:
+      'Beneficiaries by Priority',
+
+    priority1:
+      'Priority 1',
+
+    priority2:
+      'Priority 2',
+
+    priority3:
+      'Priority 3',
+
+    cardDistribution:
+      'Card Distribution',
+
+    basketDistribution:
+      'Basket Distribution',
+
+    delivered:
+      'Delivered',
+
+    notDelivered:
+      'Not Delivered',
+
+    deliveryRate:
+      'Delivery Rate',
+
+    beneficiaryName:
+      'Full Name',
+
+    card:
+      'Card',
+
+    basket:
+      'Basket',
+
+    alreadyCard:
+      'The card has already been delivered to this beneficiary',
+
+    alreadyBasket:
+      'The basket has already been delivered to this beneficiary',
+
+    deliverCard:
+      'Deliver Card',
+
+    deliverBasket:
+      'Deliver Basket',
+
+    searching:
+      'Loading beneficiary information...',
+
+    searchDatabase:
+      'Searching beneficiary database...',
+
+    processing:
+      'Processing...',
+
+    savingCard:
+      'Registering card delivery...',
+
+    savingBasket:
+      'Registering basket delivery...',
+
+    updatingStats:
+      'Updating statistics...',
+
+    enterId:
+      'Please enter the beneficiary ID.',
+
+    enterSearch:
+      'Please enter a search value.',
+
+    connectionError:
+      'Unable to connect to the database.',
+
+    cameraError:
+      'Unable to start the camera. Please allow camera access for this website.',
+
+    noResults:
+      'No matching beneficiaries were found.',
+
+    resultsFound:
+      'Found',
+
+    resultWord:
+      'results',
+
+    lastUpdate:
+      'Last update',
+
+    cardYes:
+      '✓ Card: Delivered',
+
+    cardNo:
+      '○ Card: Not Delivered',
+
+    basketYes:
+      '✓ Basket: Delivered',
+
+    basketNo:
+      '○ Basket: Not Delivered',
+
+    welcomeButton:
+      'Enter System',
+
+    autoEnter:
+      'Continuing automatically in',
+
+    seconds:
+      'seconds',
+
+    homeSubtitle:
+      'Distribution Management System',
+
+    cardSubtitle:
+      'Verify beneficiaries and register card delivery',
+
+    basketSubtitle:
+      'Verify beneficiaries and register basket delivery',
+
+    searchSubtitle:
+      'Search beneficiary records',
+
+    statsSubtitle:
+      'Monitor distribution progress and completion rates'
+  }
+};
+
+
+/* ==================================================
+   WELCOME QUOTES
+================================================== */
+
+const welcomeQuotes = [
+
+  {
+    ar:'كل يدٍ تمتد بالعطاء تصنع أملاً جديداً.',
+    en:'Every helping hand creates a new beginning of hope.'
+  },
+
+  {
+    ar:'حين نعمل معاً، يصبح الأمل أقرب إلى كل أسرة.',
+    en:'When we work together, hope comes closer to every family.'
+  },
+
+  {
+    ar:'العطاء ليس مجرد مساعدة، بل رسالة تقول: نحن معكم.',
+    en:'Giving is more than assistance; it is a message that says: we are with you.'
+  },
+
+  {
+    ar:'خطوة صغيرة من الخير قد تصنع فرقاً كبيراً في حياة إنسان.',
+    en:'A small act of kindness can make a remarkable difference in someone’s life.'
+  },
+
+  {
+    ar:'مع كل ابتسامة نصنعها، نزرع بذرة أمل للمستقبل.',
+    en:'With every smile we create, we plant a seed of hope for the future.'
+  },
+
+  {
+    ar:'الأمل يكبر عندما نتشاركه، والخير يزداد عندما نقدمه.',
+    en:'Hope grows when shared, and kindness grows when given.'
+  },
+
+  {
+    ar:'معاً نحول التضامن إلى أثر، والأمل إلى واقع.',
+    en:'Together, we turn solidarity into impact and hope into reality.'
+  },
+
+  {
+    ar:'وراء كل عملية توزيع قصة إنسان تستحق الاهتمام والكرامة.',
+    en:'Behind every distribution is a human story worthy of care and dignity.'
+  },
+
+  {
+    ar:'نؤمن أن المستقبل الأفضل يبدأ بخطوة إنسانية اليوم.',
+    en:'We believe a better tomorrow begins with a compassionate step today.'
+  },
+
+  {
+    ar:'حين يجتمع التنظيم مع الرحمة، يصل الخير إلى المكان الصحيح.',
+    en:'When organization meets compassion, support reaches where it matters most.'
+  },
+
+  {
+    ar:'نصنع اليوم أثراً يبقى، وأملاً يستمر.',
+    en:'Today we create an impact that lasts and hope that continues.'
+  },
+
+  {
+    ar:'كل إنسان يستحق أن يرى في الغد فرصة جديدة.',
+    en:'Everyone deserves to see tomorrow as a new opportunity.'
+  }
+];
+
+
+/* ==================================================
+   PAGE INFO
+================================================== */
+
+function pageInfo(){
+
+  const t =
+    translations[currentLanguage];
+
+  return {
+
+    home:{
+      title:t.home,
+      subtitle:t.homeSubtitle
+    },
+
+    card:{
+      title:t.cardDelivery,
+      subtitle:t.cardSubtitle
+    },
+
+    basket:{
+      title:t.basketDelivery,
+      subtitle:t.basketSubtitle
+    },
+
+    search:{
+      title:t.searchBeneficiary,
+      subtitle:t.searchSubtitle
+    },
+
+    stats:{
+      title:t.statistics,
+      subtitle:t.statsSubtitle
+    }
+  };
+}
+
+
+/* ==================================================
+   STARTUP
+================================================== */
+
+window.addEventListener(
+  'load',
+  function(){
+
+    applyLanguage();
+
+    prepareWelcomeQuote();
+
+    setTimeout(
+      function(){
+
+        document
+          .getElementById('splash')
+          .classList.add('hide');
+
+        showWelcome();
+
+      },
+      2300
+    );
+
+    setTimeout(
+      function(){
+
+        const splash =
+          document.getElementById('splash');
+
+        if(splash){
+          splash.remove();
+        }
+
+      },
+      3100
+    );
+  }
+);
+
+
+/* ==================================================
+   WELCOME
+================================================== */
+
+function prepareWelcomeQuote(){
+
+  const randomIndex =
+    Math.floor(
+      Math.random() *
+      welcomeQuotes.length
+    );
+
+  const quote =
+    welcomeQuotes[randomIndex];
+
+  document.getElementById(
+    'welcomeQuoteAr'
+  ).textContent =
+    quote.ar;
+
+  document.getElementById(
+    'welcomeQuoteEn'
+  ).textContent =
+    quote.en;
+}
+
+
+function showWelcome(){
+
+  const screen =
+    document.getElementById(
+      'welcomeScreen'
+    );
+
+  screen.style.display =
+    'flex';
+
+  requestAnimationFrame(
+    function(){
+
+      screen.classList.add(
+        'show'
+      );
+    }
+  );
+
+  welcomeSeconds =
+    15;
+
+  updateWelcomeCountdown();
+
+  welcomeTimer =
+    setInterval(
+      function(){
+
+        welcomeSeconds--;
+
+        updateWelcomeCountdown();
+
+        if(welcomeSeconds <= 0){
+
+          enterSystem();
+        }
+
+      },
+      1000
+    );
+}
+
+
+function updateWelcomeCountdown(){
+
+  const t =
+    translations[currentLanguage];
+
+  document.getElementById(
+    'welcomeButton'
+  ).textContent =
+    t.welcomeButton;
+
+  document.getElementById(
+    'welcomeCountdown'
+  ).textContent =
+
+    t.autoEnter +
+    ' ' +
+    welcomeSeconds +
+    ' ' +
+    t.seconds;
+}
+
+
+function enterSystem(){
+
+  if(welcomeTimer){
+
+    clearInterval(
+      welcomeTimer
+    );
+
+    welcomeTimer =
+      null;
+  }
+
+  const screen =
+    document.getElementById(
+      'welcomeScreen'
+    );
+
+  if(!screen){
+    return;
+  }
+
+  screen.classList.add(
+    'leave'
+  );
+
+  setTimeout(
+    function(){
+
+      screen.style.display =
+        'none';
+
+    },
+    600
+  );
+}
+
+
+/* ==================================================
+   LANGUAGE
+================================================== */
+
+function toggleLanguage(){
+
+  currentLanguage =
+    currentLanguage === 'ar'
+      ? 'en'
+      : 'ar';
+
+  applyLanguage();
+}
+
+
+function applyLanguage(){
+
+  const t =
+    translations[currentLanguage];
+
+  document.documentElement.lang =
+    currentLanguage;
+
+  document.documentElement.dir =
+    currentLanguage === 'ar'
+      ? 'rtl'
+      : 'ltr';
+
+  document.querySelectorAll(
+    '[data-i18n]'
+  ).forEach(
+    function(element){
+
+      const key =
+        element.getAttribute(
+          'data-i18n'
+        );
+
+      if(t[key] !== undefined){
+
+        element.textContent =
+          t[key];
+      }
+    }
+  );
+
+
+  document.querySelectorAll(
+    '[data-placeholder-ar]'
+  ).forEach(
+    function(element){
+
+      element.placeholder =
+
+        currentLanguage === 'ar'
+
+          ? element.getAttribute(
+              'data-placeholder-ar'
+            )
+
+          : element.getAttribute(
+              'data-placeholder-en'
+            );
+    }
+  );
+
+
+  document.getElementById(
+    'langButton'
+  ).textContent =
+
+    currentLanguage === 'ar'
+      ? 'EN'
+      : 'AR';
+
+
+  document.getElementById(
+    'mobileLangButton'
+  ).textContent =
+
+    currentLanguage === 'ar'
+      ? 'EN'
+      : 'AR';
+
+
+  updatePageHeader();
+
+
+  if(
+    currentCardPerson
+  ){
+
+    renderDeliveryPerson(
+      'card',
+      currentCardPerson
+    );
+  }
+
+
+  if(
+    currentBasketPerson
+  ){
+
+    renderDeliveryPerson(
+      'basket',
+      currentBasketPerson
+    );
+  }
+
+
+  if(
+    lastSearchResults.length
+  ){
+
+    renderSearchResults(
+      lastSearchResults
+    );
+  }
+
+
+  if(currentStats){
+
+    renderStats(
+      currentStats
+    );
+  }
+
+
+  if(
+    document.getElementById(
+      'welcomeScreen'
+    ).style.display ===
+    'flex'
+  ){
+
+    updateWelcomeCountdown();
+  }
+}
+
+
+function updatePageHeader(){
+
+  const info =
+    pageInfo();
+
+  if(!info[currentView]){
+    return;
+  }
+
+  document.getElementById(
+    'pageTitle'
+  ).textContent =
+    info[currentView].title;
+
+  document.getElementById(
+    'pageSubtitle'
+  ).textContent =
+    info[currentView].subtitle;
+}
+
+
+/* ==================================================
+   SIDEBAR
+================================================== */
+
+function toggleSidebar(){
+
+  const sidebar =
+    document.getElementById(
+      'sidebar'
+    );
+
+  const overlay =
+    document.getElementById(
+      'sidebarOverlay'
+    );
+
+  const button =
+    document.getElementById(
+      'menuButton'
+    );
+
+  if(
+    sidebar.classList.contains(
+      'open'
+    )
+  ){
+
+    closeSidebar();
+    return;
+  }
+
+  sidebar.classList.add(
+    'open'
+  );
+
+  overlay.classList.add(
+    'show'
+  );
+
+  button.classList.add(
+    'open'
+  );
+
+  document.body.style.overflow =
+    'hidden';
+}
+
+
+function closeSidebar(){
+
+  document
+    .getElementById('sidebar')
+    .classList.remove('open');
+
+  document
+    .getElementById('sidebarOverlay')
+    .classList.remove('show');
+
+  document
+    .getElementById('menuButton')
+    .classList.remove('open');
+
+  document.body.style.overflow =
+    '';
+}
+
+
+/* ==================================================
+   NAVIGATION
+================================================== */
+
+async function navigate(view){
+
+  await stopScanner();
+
+  currentView =
+    view;
+
+  document
+    .querySelectorAll('.view')
+    .forEach(
+      function(el){
+
+        el.classList.remove(
+          'active'
+        );
+      }
+    );
+
+  const target =
+    document.getElementById(
+      'view-' + view
+    );
+
+  if(target){
+
+    target.classList.add(
+      'active'
+    );
+  }
+
+  document
+    .querySelectorAll('.nav-btn')
+    .forEach(
+      function(el){
+
+        el.classList.remove(
+          'active'
+        );
+      }
+    );
+
+  const navButton =
+    document.querySelector(
+      '.nav-btn[data-view="' +
+      view +
+      '"]'
+    );
+
+  if(navButton){
+
+    navButton.classList.add(
+      'active'
+    );
+  }
+
+  updatePageHeader();
+
+  closeSidebar();
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
+  if(view === 'stats'){
+
+    loadStats(false);
+  }
+}
+
+
+/* ==================================================
+   SCANNER
+================================================== */
+
+async function startScanner(type){
+
+  if(
+    scannerRunning ||
+    scannerProcessing
+  ){
+    return;
+  }
+
+  const t =
+    translations[currentLanguage];
+
+  hideAlert(type);
+
+  const placeholder =
+    document.getElementById(
+      'placeholder-' + type
+    );
+
+  const button =
+    document.getElementById(
+      'scan-' + type + '-btn'
+    );
+
+
+  if(type === 'card'){
+
+    document.getElementById(
+      'result-card'
+    ).style.display =
+      'none';
+
+    currentCardPerson =
+      null;
+  }
+
+
+  if(type === 'basket'){
+
+    document.getElementById(
+      'result-basket'
+    ).style.display =
+      'none';
+
+    currentBasketPerson =
+      null;
+  }
+
+
+  if(type === 'search'){
+
+    document.getElementById(
+      'searchResults'
+    ).innerHTML =
+      '';
+
+    lastSearchResults =
+      [];
+  }
+
+
+  placeholder.style.display =
+    'none';
+
+  button.disabled =
+    true;
+
+  button.textContent =
+    t.startingCamera;
+
+
+  try{
+
+    scanner =
+      new Html5Qrcode(
+        'reader-' + type,
+        {
+          formatsToSupport:[
+            Html5QrcodeSupportedFormats.QR_CODE
+          ],
+          verbose:false
+        }
+      );
+
+    scannerType =
+      type;
+
+
+    await scanner.start(
+
+      {
+        facingMode:'environment'
+      },
+
+      {
+        fps:12,
+
+        qrbox:
+          function(width,height){
+
+            const size =
+              Math.floor(
+                Math.min(
+                  width,
+                  height
+                ) * .68
+              );
+
+            return{
+              width:size,
+              height:size
+            };
+          },
+
+        aspectRatio:1
+      },
+
+      function(decodedText){
+
+        onQrRead(
+          type,
+          decodedText
+        );
+      },
+
+      function(){}
+    );
+
+
+    scannerRunning =
+      true;
+
+    button.textContent =
+      t.cameraRunning;
+
+
+  }catch(error){
+
+    console.error(error);
+
+    scannerRunning =
+      false;
+
+    scanner =
+      null;
+
+    scannerType =
+      null;
+
+    placeholder.style.display =
+      'flex';
+
+    button.disabled =
+      false;
+
+    button.textContent =
+      t.retryCamera;
+
+    showAlert(
+      type,
+      t.cameraError
+    );
+  }
+}
+
+
+/* ==================================================
+   QR READ
+================================================== */
+
+async function onQrRead(
+  type,
+  decodedText
+){
+
+  if(scannerProcessing){
+    return;
+  }
+
+  const id =
+    String(
+      decodedText || ''
+    ).trim();
+
+  if(!id){
+    return;
+  }
+
+  scannerProcessing =
+    true;
+
+  try{
+
+    if(navigator.vibrate){
+      navigator.vibrate(80);
+    }
+
+  }catch(e){}
+
+  await stopScanner();
+
+  scannerProcessing =
+    false;
+
+
+  if(type === 'card'){
+
+    lookupDeliveryPerson(
+      'card',
+      id
+    );
+
+    return;
+  }
+
+
+  if(type === 'basket'){
+
+    document.getElementById(
+      'basketId'
+    ).value =
+      id;
+
+    lookupDeliveryPerson(
+      'basket',
+      id
+    );
+
+    return;
+  }
+
+
+  if(type === 'search'){
+
+    document.getElementById(
+      'searchType'
+    ).value =
+      'id';
+
+    document.getElementById(
+      'searchQuery'
+    ).value =
+      id;
+
+    runSearch(
+      id,
+      'id'
+    );
+  }
+}
+
+
+/* ==================================================
+   STOP SCANNER
+================================================== */
+
+async function stopScanner(){
+
+  const oldType =
+    scannerType;
+
+  if(
+    scanner &&
+    scannerRunning
+  ){
+
+    try{
+      await scanner.stop();
+    }catch(e){}
+  }
+
+  if(scanner){
+
+    try{
+      await scanner.clear();
+    }catch(e){}
+  }
+
+  scannerRunning =
+    false;
+
+  scanner =
+    null;
+
+  scannerType =
+    null;
+
+
+  if(oldType){
+
+    const placeholder =
+      document.getElementById(
+        'placeholder-' +
+        oldType
+      );
+
+    const button =
+      document.getElementById(
+        'scan-' +
+        oldType +
+        '-btn'
+      );
+
+    if(placeholder){
+
+      placeholder.style.display =
+        'flex';
+    }
+
+    if(button){
+
+      button.disabled =
+        false;
+
+      button.textContent =
+
+        oldType === 'search'
+
+          ? translations[currentLanguage].cameraSearch
+
+          : translations[currentLanguage].startCamera;
+    }
+  }
+}
+
+
+/* ==================================================
+   BASKET MANUAL
+================================================== */
+
+function lookupManualBasket(){
+
+  const id =
+    document
+      .getElementById(
+        'basketId'
+      )
+      .value
+      .trim();
+
+  if(!id){
+
+    showAlert(
+      'basket',
+      translations[currentLanguage].enterId
+    );
+
+    return;
+  }
+
+  lookupDeliveryPerson(
+    'basket',
+    id
+  );
+}
+
+
+/* ==================================================
+   PERSON LOOKUP
+================================================== */
+
+function lookupDeliveryPerson(
+  type,
+  id
+){
+
+  hideAlert(type);
+
+  showLoading(
+    translations[currentLanguage].searching
+  );
+
+  apiRequest(
+
+    {
+      action:'person',
+      id:id
+    },
+
+    function(response){
+
+      hideLoading();
+
+      if(
+        !response ||
+        !response.success
+      ){
+
+        showAlert(
+          type,
+          response && response.message
+            ? response.message
+            : translations[currentLanguage].connectionError
+        );
+
+        return;
+      }
+
+      const person =
+        response.person;
+
+      if(type === 'card'){
+
+        currentCardPerson =
+          person;
+
+      }else{
+
+        currentBasketPerson =
+          person;
+      }
+
+      renderDeliveryPerson(
+        type,
+        person
+      );
+    },
+
+    function(){
+
+      hideLoading();
+
+      showAlert(
+        type,
+        translations[currentLanguage].connectionError
+      );
+    }
+  );
+}
+
+
+/* ==================================================
+   PERSON RESULT
+================================================== */
+
+function renderDeliveryPerson(
+  type,
+  person
+){
+
+  const t =
+    translations[currentLanguage];
+
+  const result =
+    document.getElementById(
+      'result-' + type
+    );
+
+  const delivered =
+
+    type === 'card'
+
+      ? person.cardDelivered
+
+      : person.basketDelivered;
+
+
+  const alreadyText =
+
+    type === 'card'
+
+      ? t.alreadyCard
+
+      : t.alreadyBasket;
+
+
+  const buttonText =
+
+    type === 'card'
+
+      ? t.deliverCard
+
+      : t.deliverBasket;
+
+
+  const action =
+
+    delivered
+
+      ? `
+
+        <div class="delivered">
+
+          <span>✓</span>
+
+          <span>
+            ${escapeHtml(alreadyText)}
+          </span>
+
+        </div>
+
+      `
+
+      : `
+
+        <button
+          class="btn btn-deliver"
+          onclick="confirmDelivery('${type}')"
+        >
+          ✓ &nbsp;
+          ${escapeHtml(buttonText)}
+        </button>
+
+      `;
+
+
+  result.innerHTML = `
+
+    <div class="person-main">
+
+      <div class="person-header-line">
+
+        <div>
+
+          <div class="person-label">
+            ${escapeHtml(t.beneficiaryName)}
+          </div>
+
+          <div class="person-name">
+            ${escapeHtml(person.name)}
+          </div>
+
+          <div class="person-id">
+            ID:
+            ${escapeHtml(person.id)}
+          </div>
+
+        </div>
+
+
+        <div class="priority-badge">
+
+          ${escapeHtml(t.priority)}
+
+          <span class="priority-number">
+            ${escapeHtml(person.priority || '—')}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="person-action">
+      ${action}
+    </div>
+
+  `;
+
+  result.style.display =
+    'block';
+
+  setTimeout(
+    function(){
+
+      result.scrollIntoView({
+        behavior:'smooth',
+        block:'nearest'
+      });
+
+    },
+    100
+  );
+}
+
+
+/* ==================================================
+   CONFIRM DELIVERY
+================================================== */
+
+function confirmDelivery(type){
+
+  const t =
+    translations[currentLanguage];
+
+  const person =
+
+    type === 'card'
+
+      ? currentCardPerson
+
+      : currentBasketPerson;
+
+
+  if(!person){
+    return;
+  }
+
+
+  showLoading(
+
+    type === 'card'
+
+      ? t.savingCard
+
+      : t.savingBasket
+  );
+
+
+  apiRequest(
+
+    {
+
+      action:
+        type === 'card'
+          ? 'deliverCard'
+          : 'deliverBasket',
+
+      id:person.id
+
+    },
+
+    function(response){
+
+      hideLoading();
+
+      if(
+        !response ||
+        !response.success
+      ){
+
+        showToast(
+          response && response.message
+            ? response.message
+            : t.connectionError
+        );
+
+        return;
+      }
+
+
+      if(type === 'card'){
+
+        currentCardPerson =
+          response.person;
+
+      }else{
+
+        currentBasketPerson =
+          response.person;
+      }
+
+
+      renderDeliveryPerson(
+        type,
+        response.person
+      );
+
+
+      showToast(
+        type === 'card'
+          ? t.deliverCard + ' ✓'
+          : t.deliverBasket + ' ✓'
+      );
+    },
+
+    function(){
+
+      hideLoading();
+
+      showToast(
+        t.connectionError
+      );
+    }
+  );
+}
+
+
+/* ==================================================
+   SEARCH
+================================================== */
+
+function performSearch(){
+
+  const t =
+    translations[currentLanguage];
+
+  const query =
+    document
+      .getElementById(
+        'searchQuery'
+      )
+      .value
+      .trim();
+
+  const type =
+    document.getElementById(
+      'searchType'
+    ).value;
+
+  if(!query){
+
+    showAlert(
+      'search',
+      t.enterSearch
+    );
+
+    return;
+  }
+
+  runSearch(
+    query,
+    type
+  );
+}
+
+
+function runSearch(
+  query,
+  type
+){
+
+  const t =
+    translations[currentLanguage];
+
+  hideAlert(
+    'search'
+  );
+
+  document.getElementById(
+    'searchResults'
+  ).innerHTML =
+    '';
+
+  showLoading(
+    t.searchDatabase
+  );
+
+  apiRequest(
+
+    {
+      action:'search',
+      q:query,
+      type:type
+    },
+
+    function(response){
+
+      hideLoading();
+
+      if(
+        !response ||
+        !response.success
+      ){
+
+        showAlert(
+          'search',
+          response && response.message
+            ? response.message
+            : t.connectionError
+        );
+
+        return;
+      }
+
+      lastSearchResults =
+        response.results || [];
+
+      renderSearchResults(
+        lastSearchResults
+      );
+    },
+
+    function(){
+
+      hideLoading();
+
+      showAlert(
+        'search',
+        t.connectionError
+      );
+    }
+  );
+}
+
+
+/* ==================================================
+   SEARCH RESULTS
+================================================== */
+
+function renderSearchResults(
+  results
+){
+
+  const t =
+    translations[currentLanguage];
+
+  const container =
+    document.getElementById(
+      'searchResults'
+    );
+
+
+  if(!results.length){
+
+    container.innerHTML = `
+
+      <div
+        class="alert"
+        style="display:block"
+      >
+        ${escapeHtml(t.noResults)}
+      </div>
+
+    `;
+
+    return;
+  }
+
+
+  let html = `
+
+    <div class="result-count">
+
+      ${escapeHtml(t.resultsFound)}
+      ${results.length}
+      ${escapeHtml(t.resultWord)}
+
+    </div>
+
+  `;
+
+
+  results.forEach(
+    function(person){
+
+      html += `
+
+        <div class="result-card">
+
+          <div class="result-top">
+
+            <div class="result-name">
+              ${escapeHtml(person.name)}
+            </div>
+
+            <div class="result-id">
+              ID:
+              ${escapeHtml(person.id)}
+            </div>
+
+          </div>
+
+
+          <div class="info-grid">
+
+
+            <div class="info-item">
+
+              <div class="info-label">
+                ${escapeHtml(t.spouse)}
+              </div>
+
+              <div class="info-value">
+                ${escapeHtml(person.spouse)}
+              </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+              <div class="info-label">
+                ${escapeHtml(t.phone)}
+              </div>
+
+              <div
+                class="info-value"
+                dir="ltr"
+              >
+                ${escapeHtml(person.phone)}
+              </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+              <div class="info-label">
+                ID
+              </div>
+
+              <div
+                class="info-value"
+                dir="ltr"
+              >
+                ${escapeHtml(person.id)}
+              </div>
+
+            </div>
+
+
+            <div class="info-item priority-info">
+
+              <div class="info-label">
+                ${escapeHtml(t.priority)}
+              </div>
+
+              <div class="info-value">
+                ${escapeHtml(person.priority || '—')}
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+          <div class="delivery-statuses">
+
+
+            <span class="
+              badge
+              ${person.cardDelivered ? 'yes' : 'no'}
+            ">
+              ${
+                person.cardDelivered
+                  ? escapeHtml(t.cardYes)
+                  : escapeHtml(t.cardNo)
+              }
+            </span>
+
+
+            <span class="
+              badge
+              ${person.basketDelivered ? 'yes' : 'no'}
+            ">
+              ${
+                person.basketDelivered
+                  ? escapeHtml(t.basketYes)
+                  : escapeHtml(t.basketNo)
+              }
+            </span>
+
+
+          </div>
+
+        </div>
+
+      `;
+
+    }
+  );
+
+  container.innerHTML =
+    html;
+}
+
+
+/* ==================================================
+   STATISTICS
+================================================== */
+
+function loadStats(showLoader){
+
+  const t =
+    translations[currentLanguage];
+
+  hideAlert(
+    'stats'
+  );
+
+  if(showLoader){
+
+    showLoading(
+      t.updatingStats
+    );
+  }
+
+  apiRequest(
+
+    {
+      action:'stats'
+    },
+
+    function(response){
+
+      hideLoading();
+
+      if(
+        !response ||
+        !response.success
+      ){
+
+        showAlert(
+          'stats',
+          response && response.message
+            ? response.message
+            : t.connectionError
+        );
+
+        return;
+      }
+
+      currentStats =
+        response.stats;
+
+      renderStats(
+        currentStats
+      );
+    },
+
+    function(){
+
+      hideLoading();
+
+      showAlert(
+        'stats',
+        t.connectionError
+      );
+    }
+  );
+}
+
+
+function renderStats(stats){
+
+  const t =
+    translations[currentLanguage];
+
+  document.getElementById(
+    'statTotal'
+  ).textContent =
+    stats.total;
+
+  document.getElementById(
+    'statCardDelivered'
+  ).textContent =
+    stats.cardDelivered;
+
+  document.getElementById(
+    'statBasketDelivered'
+  ).textContent =
+    stats.basketDelivered;
+
+
+  document.getElementById(
+    'priority1Count'
+  ).textContent =
+    stats.priority1;
+
+  document.getElementById(
+    'priority2Count'
+  ).textContent =
+    stats.priority2;
+
+  document.getElementById(
+    'priority3Count'
+  ).textContent =
+    stats.priority3;
+
+
+  document.getElementById(
+    'cardYes'
+  ).textContent =
+    stats.cardDelivered;
+
+  document.getElementById(
+    'cardNo'
+  ).textContent =
+    stats.cardNotDelivered;
+
+  document.getElementById(
+    'basketYes'
+  ).textContent =
+    stats.basketDelivered;
+
+  document.getElementById(
+    'basketNo'
+  ).textContent =
+    stats.basketNotDelivered;
+
+
+  document.getElementById(
+    'cardPercent'
+  ).textContent =
+    t.deliveryRate +
+    ': ' +
+    stats.cardPercent +
+    '%';
+
+
+  document.getElementById(
+    'basketPercent'
+  ).textContent =
+    t.deliveryRate +
+    ': ' +
+    stats.basketPercent +
+    '%';
+
+
+  document.getElementById(
+    'cardProgress'
+  ).style.width =
+    stats.cardPercent +
+    '%';
+
+
+  document.getElementById(
+    'basketProgress'
+  ).style.width =
+    stats.basketPercent +
+    '%';
+
+
+  document.getElementById(
+    'statsUpdated'
+  ).textContent =
+    t.lastUpdate +
+    ': ' +
+    stats.updatedAt;
+}
+
+
+/* ==================================================
+   JSONP API
+================================================== */
+
+function apiRequest(
+  params,
+  success,
+  failure
+){
+
+  const callback =
+
+    'iac_' +
+    Date.now() +
+    '_' +
+    Math.floor(
+      Math.random() *
+      100000
+    );
+
+
+  const script =
+    document.createElement(
+      'script'
+    );
+
+
+  let done =
+    false;
+
+
+  const timeout =
+    setTimeout(
+      function(){
+
+        if(done){
+          return;
+        }
+
+        done =
+          true;
+
+        cleanup();
+
+        if(failure){
+
+          failure(
+            new Error(
+              'Request timeout'
+            )
+          );
+        }
+
+      },
+      15000
+    );
+
+
+  function cleanup(){
+
+    clearTimeout(
+      timeout
+    );
+
+    try{
+
+      delete window[
+        callback
+      ];
+
+    }catch(e){
+
+      window[
+        callback
+      ] = undefined;
+    }
+
+    if(
+      script.parentNode
+    ){
+
+      script.parentNode
+        .removeChild(
+          script
+        );
+    }
+  }
+
+
+  window[
+    callback
+  ] =
+    function(data){
+
+      if(done){
+        return;
+      }
+
+      done =
+        true;
+
+      cleanup();
+
+      if(success){
+
+        success(
+          data
+        );
+      }
+    };
+
+
+  script.onerror =
+    function(){
+
+      if(done){
+        return;
+      }
+
+      done =
+        true;
+
+      cleanup();
+
+      if(failure){
+
+        failure(
+          new Error(
+            'Connection failed'
+          )
+        );
+      }
+    };
+
+
+  params.callback =
+    callback;
+
+  params._ =
+    Date.now();
+
+
+  script.src =
+
+    API_URL +
+    '?' +
+    new URLSearchParams(
+      params
+    ).toString();
+
+
+  document.body.appendChild(
+    script
+  );
+}
+
+
+/* ==================================================
+   HELPERS
+================================================== */
+
+function showAlert(
+  type,
+  text
+){
+
+  const el =
+    document.getElementById(
+      'alert-' + type
+    );
+
+  if(!el){
+    return;
+  }
+
+  el.textContent =
+    text;
+
+  el.style.display =
+    'block';
+}
+
+
+function hideAlert(type){
+
+  const el =
+    document.getElementById(
+      'alert-' + type
+    );
+
+  if(el){
+
+    el.style.display =
+      'none';
+  }
+}
+
+
+function showLoading(text){
+
+  document.getElementById(
+    'loadingText'
+  ).textContent =
+    text ||
+    translations[currentLanguage].processing;
+
+  document.getElementById(
+    'loading'
+  ).classList.add(
+    'active'
+  );
+}
+
+
+function hideLoading(){
+
+  document.getElementById(
+    'loading'
+  ).classList.remove(
+    'active'
+  );
+}
+
+
+function showToast(text){
+
+  const el =
+    document.getElementById(
+      'toast'
+    );
+
+  el.textContent =
+    text;
+
+  el.classList.add(
+    'show'
+  );
+
+  clearTimeout(
+    toastTimer
+  );
+
+  toastTimer =
+    setTimeout(
+      function(){
+
+        el.classList.remove(
+          'show'
+        );
+
+      },
+      3000
+    );
+}
+
+
+function escapeHtml(value){
+
+  return String(
+    value == null
+      ? ''
+      : value
+  )
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
+}
+
+
+/* ==================================================
+   EVENTS
+================================================== */
+
+window.addEventListener(
+  'pagehide',
+  function(){
+
+    if(
+      scanner &&
+      scannerRunning
+    ){
+
+      try{
+        scanner.stop();
+      }catch(e){}
+    }
+  }
+);
+
+
+window.addEventListener(
+  'resize',
+  function(){
+
+    if(
+      window.innerWidth >
+      850
+    ){
+
+      closeSidebar();
+    }
+  }
+);
+
+
+document.addEventListener(
+  'keydown',
+  function(event){
+
+    if(
+      event.key ===
+      'Escape'
+    ){
+
+      closeSidebar();
+    }
+  }
+);
+
+</script>
+
+</body>
+</html>
